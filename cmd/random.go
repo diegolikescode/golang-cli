@@ -56,7 +56,7 @@ func getRandomJoke() {
 	joke := Joke{}
 	
 	if err := json.Unmarshal(responseBytes, &joke); err != nil{
-		log.Printf("not get itXXXXX - %v", err)
+		log.Printf("not get it - %v", err)
 	}
 
 	fmt.Println(string(joke.Joke))
@@ -65,7 +65,7 @@ func getRandomJoke() {
 func getJokeData(baseAPI string) []byte {
 	request, err := http.NewRequest(http.MethodGet, baseAPI, nil)
 	if err != nil {
-		log.Printf("not get itX - %v", err)
+		log.Printf("not get it - %v", err)
 	}
 
 	request.Header.Add("Accept", "application/json")
@@ -73,12 +73,12 @@ func getJokeData(baseAPI string) []byte {
 
 	response, err := http.DefaultClient.Do(request)
 	if err != nil {
-		log.Printf("not get itXX - %v", err)
+		log.Printf("not get it - %v", err)
 	}
 
 	responseBytes, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		log.Printf("not get itXXX - %v", err)
+		log.Printf("not get it - %v", err)
 	}
 
 	return responseBytes
